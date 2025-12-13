@@ -1,0 +1,29 @@
+[
+  {
+    "pergunta": "Teste?",
+    "imagem": null,
+    "alternativas": ["A", "B", "C", "D"],
+    "correta": 1,
+    "explicacao": "O correto é B"
+  },
+  {
+    "pergunta": "Teste?",
+    "imagem": "Conjugado_maximo.png",
+    "alternativas": ["A", "B", "C", "D"],
+    "correta": 3,
+    "explicacao": "O correto é D"
+  },
+  {
+    "pergunta": "Assinale a alternativa correta",
+    "texto": "O Brasil é um país de dimensões continentais, com grande diversidade cultural e geográfica. Essa diversidade influencia diretamente a economia, a política e a sociedade.",
+    "alternativas": [
+      "O Brasil possui pequena extensão territorial.",
+      "O Brasil é homogêneo culturalmente.",
+      "O Brasil tem diversidade cultural e geográfica.",
+      "O Brasil não possui influência cultural na economia."
+    ],
+    "correta": 2,
+    "explicacao": "O texto destaca a diversidade cultural e geográfica como característica marcante do Brasil."
+  }
+
+]
