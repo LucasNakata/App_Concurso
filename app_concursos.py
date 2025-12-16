@@ -11,6 +11,10 @@ indice = 0
 img_tk = None
 img_original = None  # guarda a imagem original
 
+acertos = 0
+erros = 0
+
+
 def mostrar_questao():
     global indice, img_original
     questao = questoes[indice]
@@ -59,17 +63,39 @@ def atualizar_imagem(event=None):
         imagem_label.image = img_tk  # mantém referência
 
 def responder():
-    global indice
+    global indice, acertos, erros
     escolha = opcao_var.get()
     correta = questoes[indice]["correta"]
 
     if escolha == correta:
+        acertos += 1
         messagebox.showinfo("Resultado", "✅ Correto!\n" + questoes[indice]["explicacao"])
     else:
+        erros += 1
         messagebox.showerror("Resultado", "❌ Errado.\n" + questoes[indice]["explicacao"])
 
-    indice = (indice + 1) % len(questoes)
-    mostrar_questao()
+    # Verifica se era a última questão
+    if indice == len(questoes) - 1:
+        mostrar_resultados()
+    else:
+        indice += 1
+        mostrar_questao()
+
+
+def mostrar_resultados():
+    janela_resultados = tk.Toplevel(root)
+    janela_resultados.title("Resultados Finais")
+
+    tk.Label(janela_resultados, text=f"✅ Acertos: {acertos}", font=("Arial", 14), fg="green").pack(pady=10)
+    tk.Label(janela_resultados, text=f"❌ Erros: {erros}", font=("Arial", 14), fg="red").pack(pady=10)
+
+    total = acertos + erros
+    if total > 0:
+        percentual = (acertos / total) * 100
+        tk.Label(janela_resultados, text=f"Percentual de acertos: {percentual:.2f}%", font=("Arial", 12)).pack(pady=10)
+
+    # Botão para fechar a aplicação
+    tk.Button(janela_resultados, text="Fechar", command=root.destroy).pack(pady=10)
 
 # Interface
 root = tk.Tk()
